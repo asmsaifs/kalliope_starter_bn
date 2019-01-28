@@ -1,0 +1,15 @@
+---
+  - name: "wikipedia-search"
+    signals:
+      - order: "{{ query }} কাকে বলে"
+    neurons:
+      - say:
+          message: "তথ্য উপাত্ত খুঁজে দেখছি, একটু অপেক্ষা করুন"
+      - wikipedia_searcher:
+          language: "bn"
+          query: "{{ query }}"
+          file_template: "templates/wikipedia_search.j2"
+          tts:             
+            googletts:
+              language: "en"
+              cache: False

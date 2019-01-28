@@ -1,0 +1,22 @@
+---
+  - name: "say-local-date"
+    signals:
+      - order: "কটা বাজে"
+    neurons:
+      - systemdate:
+          say_template:
+            - "এখন সময় {{ hours }}টা বেজে {{ minutes }} মিনিট"
+
+  - name: "say-local-date-from-template"
+    signals:
+      - order: "আজকে কয় তারিখ"
+    neurons:
+      - systemdate:
+          file_template: "templates/systemdate_template.j2"
+
+  - name: "tea-time"
+    signals:
+      - order: "এখন কি চা পানের সময়"
+    neurons:
+      - systemdate:
+          file_template: "templates/systemdate_template_tea.j2"

@@ -1,0 +1,14 @@
+- name: "translate-en"
+  signals:
+    - order: "{{sentence}} এর ইংরেজি কি"
+  neurons:
+    - translate:
+        lang_in: "auto"
+        lang_out: "en"
+        sentence: "{{sentence}}"
+        say_template: 
+          - "{{ result }}"
+        tts:
+          googletts:
+            language: "en"
+            cache: False

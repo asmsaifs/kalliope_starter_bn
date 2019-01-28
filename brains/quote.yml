@@ -1,0 +1,13 @@
+---
+  - name: "quote"
+    signals:
+      - order: "একটি উক্তি শোনাও"
+    neurons:
+      - quotes:
+          kalliope_memory:
+            quote_text: "{{ quote_text }}"
+      - translate:
+          lang_in: "en"
+          lang_out: "bn"
+          sentence: "{{ kalliope_memory['quote_text'] }}"
+          say_template: "{{ result }}"

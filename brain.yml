@@ -1,0 +1,52 @@
+---
+  - includes:
+        - brains/say.yml
+        - brains/systemdate.yml
+        - brains/neurotransmitter.yml
+        - brains/uri.yml
+        - brains/wikipedia.yml
+        - brains/translate.yml
+        - brains/answers.yml
+        - brains/quote.yml
+
+  - name: "order-not-found-synapse"
+    signals: []
+    neurons:
+      - say:
+          message:
+            - "আমি বুঝতে পারছি না"
+            - "আমি এই আদেশ সম্পর্কে অবহিত নই"
+            - "আপনার আদেশ নবায়ন করুন"
+            - "আরেকবার বলবেন কি"
+
+  - name: "on-triggered-synapse"
+    signals: []
+    neurons:
+      - shell:
+          cmd: "aplay trigger/beep.wav"
+          async: True
+      # - say:
+      #     message:
+      #       - "জী"
+      #       # - "আমি শুনছি"
+      #       # - "আমি আপনাকে শুনছি"
+      #       # - "আমি আপনার জন্য কি করতে পারি?"
+      #       # - "আপনাকে কিভাবে সাহায্য করতে পারি?"
+
+  - name: "on-start-synapse"
+    signals: []
+    neurons:
+      - shell:
+          cmd: "aplay trigger/dong.wav"
+          async: True
+      # - say:
+      #     message: "আমি প্রস্তুত"
+
+  - name: "System-status"
+    signals:
+      - order: "দয়া করে এনালাইসিস মোড এ প্রবেশ করুন"
+    neurons:
+      - system_status:
+          say_template: 
+            - "I'm running on {{os}}, kernel {{os_version}}, with {{system_nb_cores}} cores.    C P U usage {{cpu}} %  memory usage {{memory}} %  disk usage {{disk}} %"
+          cache: False

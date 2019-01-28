@@ -1,0 +1,40 @@
+---
+  - name: "synapse1"
+    signals:
+      - order: "আমাকে একটি প্রশ্ন জিজ্ঞাসা করুন"
+    neurons:
+      - say:
+          message: "আপনি ফ্রেঞ্চ ফ্রাই পছন্দ করেন?"
+      - neurotransmitter:
+          from_answer_link:
+            - synapse: "synapse2"
+              answers:
+                - "একদম"
+                - "অবশ্যই"
+                - "জি করি"
+            - synapse: "synapse3"
+              answers:
+                - "একদমই না"
+          default: "synapse4"
+
+  - name: "synapse2"
+    signals:
+      - order: "synapse2"
+    neurons:
+      - say:
+          message: "আপনি ফ্রেঞ্চ ফ্রাই পছন্দ করেন! আমিও!"
+
+
+  - name: "synapse3"
+    signals:
+      - order: "synapse3"
+    neurons:
+      - say:
+          message: "আপনি ফ্রেঞ্চ ফ্রাই পছন্দ করেন না।"
+
+  - name: "synapse4"
+    signals:
+      - order: "synapse4"
+    neurons:
+      - say:
+          message: "আমি আপনার উত্তর বুঝতে পারছি না"

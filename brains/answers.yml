@@ -1,0 +1,15 @@
+---
+  - name: "answer-of-everything-spoken"
+    signals: 
+      - order: "আমার প্রশ্ন {{ query }}"
+    neurons:
+      - answer_of_everything:
+          key: "PXXY9K-5P3TYTPW8W"
+          question: "{{ query }}"
+          option: "ShortAnswer"
+          translate: "bn"
+          file_template: "templates/answers.j2"
+          tts:             
+            googletts:
+              language: "en"
+              cache: False
