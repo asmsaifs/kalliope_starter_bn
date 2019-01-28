@@ -8,7 +8,7 @@
 # Trigger
 # ---------------------------
 # This is the trigger that will catch your magic work to wake up Kalliope
-default_trigger: "porcupine"
+default_trigger: "snowboy"
 
 # Trigger engine configuration
 # Available engine are:
